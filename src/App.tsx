@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import HorizontalBars from './components/pages/HorizontalBars';
+import VerticalBars from './components/pages/VerticalBars';
+import MainLayout from './layouts/MainLayout';
+import LineCharts from './components/pages/LineCharts';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index={true} element={<VerticalBars />} />
+            <Route path="HorizontalBars" element={<HorizontalBars />} />
+            <Route path="LineCharts" element={<LineCharts />} />
+
+            {/* <Route path="*" element={<NotFound />} /> */}
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
