@@ -10,6 +10,7 @@ const VerticalBars = () => {
       <Row className="mt-4">
         <Col>
           <ReactECharts
+            // link="https://ya.ru/"
             option={{
               tooltip: {
                 trigger: 'axis',

@@ -11,6 +11,7 @@ export interface ReactEChartsProps {
   settings?: SetOptionOpts;
   loading?: boolean;
   theme?: 'light' | 'dark';
+  link?: string;
 }
 
 export function ReactECharts({
@@ -48,6 +49,12 @@ export function ReactECharts({
     if (chartRef.current !== null) {
       const chart = getInstanceByDom(chartRef.current);
       chart?.setOption(option, settings);
+
+      chart?.on('click', function (params) {
+        window.open(
+          'https://www.google.com/search?q=' + encodeURIComponent(params.name)
+        );
+      });
     }
   }, [option, settings, theme]); // Whenever theme changes we need to add option and setting due to it being deleted in cleanup function
 
